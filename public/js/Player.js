@@ -19,7 +19,17 @@ export default class Player {
 
     chooseMove(event) {
         event.preventDefault();
-        this.selectedPiece = new GamePiece(event.target.value);
+        console.log(event.target.parentNode);
+        if(event.target.nodeName === 'DIV') {
+            return;
+        }
+
+        if(event.target.nodeName === 'BUTTON') {
+            this.selectedPiece = new GamePiece(event.target.value, this.render);
+        } else if (event.target.nodeName === 'IMG') {
+            this.selectedPiece = new GamePiece(event.target.parentNode.value, this.render);
+        }
+        this.selectedPiece.showInBattlefield();
         this.socketManager.emit('player.chooseMove', this.selectedPiece);
     }
 

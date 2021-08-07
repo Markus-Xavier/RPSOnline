@@ -24,7 +24,7 @@
         </div>
       </div>
     </header>
-    <main>
+    <main class="flex-battle">
       <section id="scene-one">
         <div class="avatar-creation-container flex-avatar-creation">
           <form name="player-creation">
@@ -93,12 +93,15 @@
           <img src="./assets/Rock_Sticker.png"/>
         </div>
         <div class="battle-moves">
-          <button value="rock">Rock</button>
-          <button value="paper">Paper</button>
-          <button value="scissors">Scissors</button>
+          <div class="battle-button-container">
+            <button class="battle-moves-button" value="rock"><img src="./assets/Rock_Sticker.png"> ROCK</button>
+            <button class="battle-moves-button" value="paper"><img src="./assets/Paper_Sticker.png"> PAPER</button>
+            <button class="battle-moves-button" value="scissors"><img src="./assets/Scissor_Sticker.png""> SCISSORS</button>
+            </div>
+          <span>CHOOSE YOUR FIGHTER</span>
         </div>
         <div class="battle-platform">
-          <img src="./assets/Rock_Sticker.png"/>
+          <img src="./assets/Rock_Sticker.png" hidden/>
         </div>
       </section>
     </main>

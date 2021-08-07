@@ -26,6 +26,10 @@ export default class Render {
         }
     }
 
+    renderGamePiece(location, gamePiece) {
+        location.src = gamePiece;
+    }
+
     renderText(element, text) {
         element.innerText = text;
     }
@@ -33,6 +37,7 @@ export default class Render {
     changeScene(sceneNumber) {
         switch (sceneNumber) {
             case 1:
+                document.querySelector('main').classList.remove('flex-battle');
                 document.getElementById('scene-one').style.display = 'block';
                 document.getElementById('scene-two').style.display = 'none';
                 document.getElementById('scene-three').style.display = 'none';
@@ -41,6 +46,7 @@ export default class Render {
                 break;
                 
             case 2:
+                document.querySelector('main').classList.remove('flex-battle');
                 document.getElementById('scene-one').style.display = 'none';
                 document.getElementById('scene-two').style.display = 'block';
                 document.getElementById('scene-three').style.display = 'none';
@@ -50,6 +56,7 @@ export default class Render {
                 break;
 
             case 3:
+                document.querySelector('main').classList.add('flex-battle');
                 document.getElementById('scene-one').style.display = 'none';
                 document.getElementById('scene-two').style.display = 'none';
                 document.getElementById('scene-three').style.display = 'block';

@@ -228,6 +228,12 @@ form {
 
 /*~~~~~battle~~~~~*/
 
+.flex-battle {
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: flex-end;
+}
+
 .battle-opponent-platform {
     position: absolute;
     bottom: 492px;
@@ -266,5 +272,43 @@ form {
 }
 
 .battle-moves {
-    
+    display: flex;
+    flex-direction: column;
+    margin-right: 200px;
+}
+
+.battle-moves span {
+    text-align: end;
+    padding-right: 32px;
+    font-size: 1.5em;
+    font-weight: 600;
+    margin: 16px;
+}
+
+.battle-moves-button {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 150px;
+    height: 150px;
+    border-radius: 8px;
+    border: none;
+    background-color: #005F73;
+    color: white;
+    font-size: 1.125em;
+    margin-right: 32px;
+}
+
+.battle-moves-button:hover {
+    background-color: #EE9B00;
+}
+
+.battle-button-container{
+    display: flex;
+}
+
+.battle-moves-button img {
+    height: 95px;
+    width: 95px;
 }
