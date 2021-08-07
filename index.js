@@ -4,7 +4,6 @@ app.use(express.static('public'));
 const port = process.env.PORT || 5000;
 const http = require('http').createServer(app);
 const io = require('socket.io')(http, {pingTimeout: 60000});
-
 http.listen(port);
 
 app.get('/', function(req, res){

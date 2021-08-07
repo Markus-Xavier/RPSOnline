@@ -28,7 +28,7 @@ const socketManager = new SocketManager();
 const render = new Render();
 let player = new Player(socketManager, render);
 const formManager = new FormManager('player-creation', loginHandler);
-const gameManager = new GameManager(socketManager, render);
+const gameManager = new GameManager(socketManager, render, player);
 const buttons = document.getElementsByClassName('battle-button-container')[0];
 const copyURLButton = document.getElementsByClassName('copy-link-button')[0];
 copyURLButton.addEventListener('click', saveLinkToClipboard);
@@ -37,8 +37,9 @@ buttons.addEventListener('click', player.chooseMove.bind(player));
 (() => {
   socketManager.on(serverEvents.ROUND_WINNER, player.roundWinner.bind(player));
   socketManager.on(serverEvents.ROUND_START, (opponentData) => {
+    gameManager.resetBattlefield();
     render.renderOpponentBadge(opponentData);
-    gameManager.startTimer
+    gameManager.startTimer();
   });
   // socketManager.on(serverEvents.CONNECT);
   socketManager.on(serverEvents.ROUND_START, gameManager.startBattlefield.bind(gameManager));

@@ -5,7 +5,7 @@ export default class Player {
     constructor(socketManager, render) {
         this.username = '';
         this.icon = '';
-        this.selectedPiece;
+        this.selectedPiece = null;
         this.socketManager = socketManager;
         this.render = render;
         this.wins = 0;
@@ -18,6 +18,14 @@ export default class Player {
     }
 
     chooseMove(event) {
+        if(!event.target) {
+            const playerOptions = ['rock', 'paper', 'scissors'];
+            const randomGamePiece = playerOptions[Math.floor(Math.random() * (3 - 0) + 0)];
+            console.log(randomGamePiece);
+            this.selectedPiece = new GamePiece(randomGamePiece, this.render);
+            this.selectedPiece.showInBattlefield();
+            return;
+        }
         event.preventDefault();
         console.log(event.target.parentNode);
         if(event.target.nodeName === 'DIV') {
@@ -30,7 +38,6 @@ export default class Player {
             this.selectedPiece = new GamePiece(event.target.parentNode.value, this.render);
         }
         this.selectedPiece.showInBattlefield();
-        this.socketManager.emit('player.chooseMove', this.selectedPiece);
     }
 
     roundWinner(data, opponentPiece) {

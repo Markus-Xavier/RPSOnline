@@ -51,6 +51,10 @@ footer {
     display: none;
 }
 
+#scene-three {
+    width: 100%;
+}
+
 
 /*~~~~~login~~~~~*/
 
@@ -274,12 +278,12 @@ form {
 .battle-moves {
     display: flex;
     flex-direction: column;
-    margin-right: 200px;
+    margin-right: 112px;
 }
 
 .battle-moves span {
     text-align: end;
-    padding-right: 32px;
+    padding-right: 12px;
     font-size: 1.5em;
     font-weight: 600;
     margin: 16px;
@@ -306,9 +310,33 @@ form {
 
 .battle-button-container{
     display: flex;
+    justify-content: flex-end;
 }
 
 .battle-moves-button img {
     height: 95px;
     width: 95px;
+}
+
+.flex-timer-container {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+.timer-text, .timer-text-warning, .timer-text-danger {
+    font-size: 6em;
+}
+
+.timer-text-warning {
+    color: #EE9B00;
+}
+
+.timer-text-danger {
+    color: #AE2012
+}
+
+.countdown-text {
+    font-size: 1em;
+    font-weight: 600;
 }
