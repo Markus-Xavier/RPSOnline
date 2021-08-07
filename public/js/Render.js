@@ -14,8 +14,16 @@ export default class Render {
     }
 
     renderPlayerBadge(config) {
-        document.getElementsByClassName('badge-icon')[1].innerText = config.icon;
-        document.getElementsByClassName('badge-username')[1].innerText = config.username;
+        document.getElementsByClassName('badge-icon')[0].innerText = config.icon;
+        document.getElementsByClassName('badge-username')[0].innerText = config.username;
+    }
+
+    renderOpponentBadge(opponentConfig) {
+        if(opponentConfig) {
+            console.log(opponentConfig);
+            document.getElementsByClassName('badge-opponent-icon')[0].innerText = opponentConfig.icon;
+            document.getElementsByClassName('badge-opponent-username')[0].innerText = opponentConfig.username;
+        }
     }
 
     renderText(element, text) {

@@ -13,13 +13,13 @@
   <body>
     <header>
       <h1>Rock Paper <br/> Scissors</h1>
-      <div class="player-badge">
+      <div class="player-badge" hidden>
         <img src="assets/OpponentBadge.svg"/>
-        <div class="badge-content">
-          <span class="badge-icon">🤠</span>
+        <div class="badge-opponent-content">
+          <span class="badge-opponent-icon">🤠</span>
           <div class="badge-player-data">
-            <span class="badge-username">A Happy Rat</span>
-            <div class="badge-wins">WINS <span class="badge-wins-count">0</span></div>
+            <span class="badge-opponent-username">A Happy Rat</span>
+            <div class="badge-opponent-wins">WINS <span class="badge-opponent-wins-count">0</span></div>
           </div>
         </div>
       </div>
@@ -78,7 +78,7 @@
           </form>
         </div>
       </section>
-      <section id="scene-two" hidden>
+      <section id="scene-two">
         <div class="waiting-for-opponent-container">
           <div>
             <h3>WAITING FOR AN OPPONENT</h3>
@@ -88,14 +88,14 @@
         </div>
       </section>
 
-      <div id="scene-three" hidden>
+      <div id="scene-three">
         <button value="rock">Rock</button>
         <button value="paper">Paper</button>
         <button value="scissors">Scissors</button>
       </div>
     </main>
     <footer>
-      <div class="player-badge">
+      <div class="player-badge" hidden>
         <img src="assets/Badge.svg"/>
         <div class="badge-content">
           <span class="badge-icon">🤠</span>

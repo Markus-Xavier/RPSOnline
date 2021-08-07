@@ -44,8 +44,8 @@ const clearPlayerMoves = (player, opponent) => {
 
 function initConnection(socket) {
   socket.emit('connect');
-  socket.on('room.join', (roomID, username, icon) => {
-    joinGame(socket, roomID, username, icon);
+  socket.on('room.join', (playerData) => {
+    joinGame(socket, playerData.roomID, playerData.username, playerData.icon);
   });
 
   socket.on('disconnect', () => {
@@ -90,8 +90,8 @@ function joinGame(socket, roomID, username, icon) {
     } else {
       targetRoom.playerTwo = socket.id;
       targetPlayer.room = roomID;
-      socket.emit('round.start', {name: findOpponent(socket).username, icon: findOpponent(socket).icon});
-      findOpponent(socket).socket.emit('round.start', {name: targetPlayer.name, icon: targetPlayer.icon});
+      socket.emit('round.start', {username: findOpponent(socket).username, icon: findOpponent(socket).icon});
+      findOpponent(socket).socket.emit('round.start', {username: targetPlayer.username, icon: targetPlayer.icon});
     }
   } else {
     rooms[roomID] = {

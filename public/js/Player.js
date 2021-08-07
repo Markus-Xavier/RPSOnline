@@ -9,6 +9,7 @@ export default class Player {
         this.socketManager = socketManager;
         this.render = render;
         this.wins = 0;
+        this.opponentsWins = 0;
     }
 
     initialize(playerConfig) {
@@ -28,9 +29,12 @@ export default class Player {
         } else if (data === this.selectedPiece.type) {
             console.log('I win!');
             this.wins++;
-            this.render.renderText(document.getElementsByClassName('badge-wins-count')[1], this.wins);
+            this.render.renderText(document.getElementsByClassName('badge-wins-count')[0], this.wins);
+            console.log()
         } else {
             console.log('I lose!');
+            this.opponentsWins++;
+            this.render.renderText(document.getElementsByClassName('badge-opponent-wins-count')[0], this.opponentsWins);
         }
     }
 
@@ -45,6 +49,6 @@ export default class Player {
             roomID = urlParams.get('room');
             console.log(roomID);
         }
-        this.socketManager.emit(clientEvents.ROOM_JOIN, roomID, this.username, this.icon);
+        this.socketManager.emit(clientEvents.ROOM_JOIN, {roomID, username: config.username, icon: config.icon});
     }
 }

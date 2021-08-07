@@ -36,7 +36,10 @@ buttons.addEventListener('click', player.chooseMove.bind(player));
 
 (() => {
   socketManager.on(serverEvents.ROUND_WINNER, player.roundWinner.bind(player));
-  socketManager.on(serverEvents.ROUND_START, gameManager.startTimer);
+  socketManager.on(serverEvents.ROUND_START, (opponentData) => {
+    render.renderOpponentBadge(opponentData);
+    gameManager.startTimer
+  });
   // socketManager.on(serverEvents.CONNECT);
   socketManager.on(serverEvents.ROUND_START, gameManager.startBattlefield.bind(gameManager));
   socketManager.on(serverEvents.ROOM_JOINED, gameManager.waitingForPlayer.bind(gameManager));
