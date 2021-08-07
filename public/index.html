@@ -5,8 +5,8 @@
     <link rel="stylesheet" href="./css/reset.css">
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inconsolata&family=Montserrat:wght@400;500&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@400;700&family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./css/main.css">
     <script type="module" src="./js/client.js" defer></script>
   </head>
@@ -16,9 +16,9 @@
       <div class="player-badge" hidden>
         <img src="assets/OpponentBadge.svg"/>
         <div class="badge-opponent-content">
-          <span class="badge-opponent-icon">🤠</span>
+          <span class="badge-opponent-icon"></span>
           <div class="badge-player-data">
-            <span class="badge-opponent-username">A Happy Rat</span>
+            <span class="badge-opponent-username"></span>
             <div class="badge-opponent-wins">WINS <span class="badge-opponent-wins-count">0</span></div>
           </div>
         </div>
@@ -88,11 +88,19 @@
         </div>
       </section>
 
-      <div id="scene-three">
-        <button value="rock">Rock</button>
-        <button value="paper">Paper</button>
-        <button value="scissors">Scissors</button>
-      </div>
+      <section id="scene-three">
+        <div class="battle-opponent-platform">
+          <img src="./assets/Rock_Sticker.png"/>
+        </div>
+        <div class="battle-moves">
+          <button value="rock">Rock</button>
+          <button value="paper">Paper</button>
+          <button value="scissors">Scissors</button>
+        </div>
+        <div class="battle-platform">
+          <img src="./assets/Rock_Sticker.png"/>
+        </div>
+      </section>
     </main>
     <footer>
       <div class="player-badge" hidden>

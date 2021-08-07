@@ -29,7 +29,7 @@ const render = new Render();
 let player = new Player(socketManager, render);
 const formManager = new FormManager('player-creation', loginHandler);
 const gameManager = new GameManager(socketManager, render);
-const buttons = document.getElementById('scene-three');
+const buttons = document.getElementsByClassName('battle-moves')[0];
 const copyURLButton = document.getElementsByClassName('copy-link-button')[0];
 copyURLButton.addEventListener('click', saveLinkToClipboard);
 buttons.addEventListener('click', player.chooseMove.bind(player));
@@ -47,5 +47,5 @@ buttons.addEventListener('click', player.chooseMove.bind(player));
   socketManager.on(serverEvents.OPPONENT_LEFT, gameManager.resetGame.bind(gameManager));
   socketManager.on(serverEvents.DISCONNECT, gameManager.resetGame.bind(gameManager))
   // socketManager.on('opponent.pressed.button', opponentPressedButton);
-  render.changeScene(1);
+  render.changeScene(3);
 })();

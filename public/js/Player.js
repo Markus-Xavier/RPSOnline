@@ -23,7 +23,8 @@ export default class Player {
         this.socketManager.emit('player.chooseMove', this.selectedPiece);
     }
 
-    roundWinner(data) {
+    roundWinner(data, opponentPiece) {
+        console.log (opponentPiece);
         if (data === 'draw') {
             console.log('we draw!');
         } else if (data === this.selectedPiece.type) {

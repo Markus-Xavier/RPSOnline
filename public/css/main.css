@@ -7,6 +7,7 @@ body {
     font-family: 'Montserrat', sans-serif;
     background-color: #E9D8A6;
     margin: 0;
+    color: #001219;
 }
 
 header {
@@ -148,6 +149,7 @@ form {
     font-family: sans-serif, Arial;
     font-size: 16px;
     border-radius: 4px;
+    font-weight: 700;
 }
 
 .flex-form-field input[type="radio"]:checked + label {
@@ -221,4 +223,48 @@ form {
 .badge-wins-count, .badge-opponent-wins-count{
     font-size: 1.5em;
     color: #EE9B00;
+}
+
+
+/*~~~~~battle~~~~~*/
+
+.battle-opponent-platform {
+    position: absolute;
+    bottom: 492px;
+    left: 60%;
+    background: #94D2BD;
+    border-radius: 100%;
+    width: 290px;
+    height: 37px;
+}
+
+.battle-opponent-platform img {
+    position: relative;
+    bottom: 214px;
+    left: 0;
+    height: 300px;
+    width: 300px;
+}
+
+.battle-platform {
+    position: absolute;
+    bottom: 182px;
+    left: calc(150px + 10vw);
+    background: #94D2BD;
+    border-radius: 100%;
+    width: 365px;
+    height: 51px;
+}
+
+.battle-platform img {
+    position: relative;
+    bottom: 220px;
+    left: 32px;
+    height: 325px;
+    width: 325px;
+    transform: scaleX(-1);
+}
+
+.battle-moves {
+    
 }

@@ -23,17 +23,17 @@ const declareWinner = (firstGamePiece, secondGamePiece, socket) => {
   const second = secondGamePiece.type;
 
   if (first === second) {
-    socket.emit('round.winner', 'draw');
-    findOpponent(socket).socket.emit('round.winner', 'draw');
+    socket.emit('round.winner', 'draw', second);
+    findOpponent(socket).socket.emit('round.winner', 'draw', first);
     return;
   }
 
   if (firstGamePiece.winCondition === second) {
-    socket.emit('round.winner', first);
-    findOpponent(socket).socket.emit('round.winner', first);
+    socket.emit('round.winner', first, second);
+    findOpponent(socket).socket.emit('round.winner', first, first);
   } else {
-    socket.emit('round.winner', second);
-    findOpponent(socket).socket.emit('round.winner', second);
+    socket.emit('round.winner', second, second);
+    findOpponent(socket).socket.emit('round.winner', second, first);
   }
 };
 
