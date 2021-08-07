@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Rock Paper Scissors</title>
+    <link rel="stylesheet" href="./css/reset.css">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inconsolata&family=Montserrat:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./css/main.css">
+    <script type="module" src="./js/client.js" defer></script>
+  </head>
+  <body>
+    <header>
+      <h1>Rock Paper <br/> Scissors</h1>
+    </header>
+    <main>
+      <section id="scene-one">
+        <div class="avatar-creation-container flex-avatar-creation">
+          <form name="player-creation">
+            <h3>CREATE YOUR AVATAR</h3>
+            <div class="flex-avatar-creation-form">
+              <label for="icon" class="form-field-head">SELECT ICON</label>
+              <div class="flex-form-field form-field">
+
+                <input id="😀" value="😀" name="icon" type="radio"/>
+                <label class="form-icon-button" for="😀">
+                  <span>
+                    😀
+                  </span>
+                </label>
+
+                <input id="😎" value="😎" name="icon" type="radio"/>
+                <label class="form-icon-button" for="😎">
+                  <span>
+                    😎
+                  </span>
+                </label>
+
+                <input id="🥺" value="🥺" name="icon" type="radio"/>
+                <label class="form-icon-button" for="🥺">
+                  <span>
+                    🥺
+                  </span>
+                </label>
+
+                <input id="🍆" value="🍆" name="icon" type="radio"/>
+                <label class="form-icon-button" for="🍆">
+                  <span>
+                    🍆
+                  </span>
+                </label>
+
+                <input id="💦" value="💦" name="icon" type="radio"/>
+                <label class="form-icon-button" for="💦">
+                  <span>
+                    💦
+                  </span>
+                </label>
+
+              </div>
+              <label for="username" class="form-field-head">USERNAME</label>
+              <input class="form-field text-field" name="username" required/>
+              <div class="flex-form-submit-button">
+                <button class="form-submit-button" type="submit">PLAY!</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </section>
+      <section id="scene-two" hidden>
+        <div class="waiting-for-opponent-container">
+          <div>
+            <h3>WAITING FOR AN OPPONENT</h3>
+            <h4>SEND THIS LINK TO YOUR FRIEND TO PLAY AGAINST THEM!</h4>
+            <button class="text-field copy-link-button">https://rpsgame.com/room2107<i class="far fa-copy copy-icon"></i></button>
+          </div>
+        </div>
+      </section>
+
+      <div id="scene-three" hidden>
+        <button value="rock">Rock</button>
+        <button value="paper">Paper</button>
+        <button value="scissors">Scissors</button>
+      </div>
+    </main>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.1/socket.io.js"></script>
+  </body>
+</html>

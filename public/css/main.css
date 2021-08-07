@@ -1,0 +1,155 @@
+body {
+    max-height: 100vh;
+    font-family: 'Montserrat', sans-serif;
+    background-color: #E9D8A6;
+    margin: 0;
+}
+
+main {
+    display: flex;
+    justify-content: center;
+}
+
+h1 {
+    margin: 8px;
+    font-size: 4.5em;
+    font-weight: bold;
+}
+
+h3 {
+    text-align: center;
+    font-size: 3em;
+    align-self: center;
+    margin-top: 24px;
+    margin-bottom: 44px;
+} 
+
+h4 {
+    text-align: center;
+    margin-top: -16px;
+}
+
+
+/*~~~~~login~~~~~*/
+
+
+.avatar-creation-container {
+    height: 527px;
+    width: 527px;
+    background-color: #F7F1DF;
+    border-radius: 8px;
+}
+
+.flex-avatar-creation {
+    display: flex;
+}
+
+.flex-avatar-creation-form {
+    display: flex;
+    flex-direction: column;
+    padding: 16px 24px;
+    flex-grow: 1;
+}
+
+.form-field-head {
+    font-size: 1.5em;
+    margin-bottom: 12px;
+    font-weight: bold;
+}
+
+.form-field {
+    margin-bottom: 32px;
+}
+
+.text-field {
+    height: 46px;
+    background-color: transparent;
+    border: black 1px solid;
+    font-family: 'Inconsolata', sans-serif;
+    font-size: 1.5em;
+    text-align: center;
+}
+
+.copy-link-button {
+    cursor: pointer;
+    margin-top: 64px;
+    width: 100%;
+}
+
+.flex-form-submit-button {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: auto;
+    
+}
+
+.form-submit-button {
+    width: 197px;
+    height: 42px;
+    background-color: #005F73;
+    border-radius: 8px;
+    border: none;
+    font-weight: bold;
+    font-size: 1.5em;
+    color: white;
+}
+
+.flex-form-field input[type="radio"] {
+    opacity: 0;
+    position: fixed;
+    width: 0;
+}
+
+.form-icon-button {
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 32px;
+}
+
+.form-icon-button span {
+    font-size: 2.5em;
+    
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+/*~~~~~button click FIX LATER~~~~~*/
+
+.flex-form-field label {
+    background-color: #005F73;
+    font-family: sans-serif, Arial;
+    font-size: 16px;
+    border-radius: 4px;
+}
+
+.flex-form-field input[type="radio"]:checked + label {
+    background-color: #EE9B00;
+}
+
+.flex-form-field {
+    display: flex;
+}
+
+/*~~~~~waiting for opponent~~~~~*/
+
+.waiting-for-opponent-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 308px;
+    width: 793px;
+    background-color: #F7F1DF;
+    padding: 0 24px;
+}
+
+.copy-icon {
+    float: right;
+    margin-right: 8px;
+}
