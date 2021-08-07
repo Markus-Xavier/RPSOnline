@@ -2,11 +2,13 @@ import GamePiece from "./GamePiece.js";
 import { clientEvents } from "./enum.js";
 
 export default class Player {
-    constructor(socketManager) {
+    constructor(socketManager, render) {
         this.username = '';
         this.icon = '';
         this.selectedPiece;
         this.socketManager = socketManager;
+        this.render = render;
+        this.wins = 0;
     }
 
     initialize(playerConfig) {
@@ -25,6 +27,8 @@ export default class Player {
             console.log('we draw!');
         } else if (data === this.selectedPiece.type) {
             console.log('I win!');
+            this.wins++;
+            this.render.renderText(document.getElementsByClassName('badge-wins-count')[1], this.wins);
         } else {
             console.log('I lose!');
         }
@@ -32,6 +36,7 @@ export default class Player {
 
     joinServer(config) {
         this.initialize(config);
+        this.render.renderPlayerBadge(config);
         const urlParams = new URLSearchParams(window.location.search);
         let roomID = urlParams.get('room');
         if (!roomID) {

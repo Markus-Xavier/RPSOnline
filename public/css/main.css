@@ -1,13 +1,24 @@
 body {
-    max-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    width: 100%;
+    min-height: 100vh;
     font-family: 'Montserrat', sans-serif;
     background-color: #E9D8A6;
     margin: 0;
 }
 
+header {
+    display: flex;
+    justify-content: space-between;
+}
+
 main {
+    align-items: center;
     display: flex;
     justify-content: center;
+    flex-grow: 1;
 }
 
 h1 {
@@ -27,6 +38,12 @@ h3 {
 h4 {
     text-align: center;
     margin-top: -16px;
+}
+
+footer {
+    display: flex;
+    align-items: flex-end;
+    height: 147px;
 }
 
 
@@ -147,9 +164,52 @@ form {
     width: 793px;
     background-color: #F7F1DF;
     padding: 0 24px;
+    border-radius: 8px;
 }
 
 .copy-icon {
     float: right;
     margin-right: 8px;
+}
+
+/*~~~~~badge~~~~~*/
+
+
+.player-badge{
+    margin: 32px;
+    font-family: 'Inconsolata', sans-serif;
+    color: white;
+}
+
+.badge-username {
+    white-space: nowrap;
+}
+
+.badge-content {
+    display: flex;
+    position: relative;
+    top: 20px;
+    left: -206px;
+    flex-shrink: 1;
+}
+
+.badge-player-data {
+    display: flex;
+    flex-direction: column;
+}
+
+
+.badge-icon {
+    margin-right: 16px;
+    font-size: 2.5em;
+}
+
+.badge-wins {
+    margin-top: 8px;
+    text-align: end;
+}
+
+.badge-wins-count {
+    font-size: 1.5em;
+    color: #EE9B00;
 }

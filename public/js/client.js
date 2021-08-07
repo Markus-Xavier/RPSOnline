@@ -26,14 +26,13 @@ const saveLinkToClipboard = (event) => {
 
 const socketManager = new SocketManager();
 const render = new Render();
-let player = new Player(socketManager);
+let player = new Player(socketManager, render);
 const formManager = new FormManager('player-creation', loginHandler);
 const gameManager = new GameManager(socketManager, render);
 const buttons = document.getElementById('scene-three');
 const copyURLButton = document.getElementsByClassName('copy-link-button')[0];
 copyURLButton.addEventListener('click', saveLinkToClipboard);
 buttons.addEventListener('click', player.chooseMove.bind(player));
-
 
 (() => {
   socketManager.on(serverEvents.ROUND_WINNER, player.roundWinner.bind(player));
