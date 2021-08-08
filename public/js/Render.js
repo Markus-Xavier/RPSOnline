@@ -34,6 +34,18 @@ export default class Render {
         element.innerText = text;
     }
 
+    timerTextColor(timerNumber) {
+        if(timerNumber < 3) {
+            document.getElementsByClassName('timer-text')[0].classList.add('timer-text-danger');
+        } else if (timerNumber < 5) {
+            document.getElementsByClassName('timer-text')[0].classList.add('timer-text-warning');
+        } else {
+            document.getElementsByClassName('timer-text')[0].classList.remove('timer-text-danger');
+            document.getElementsByClassName('timer-text')[0].classList.remove('timer-text-warning');
+        }
+            
+    }
+
     changeScene(sceneNumber) {
         switch (sceneNumber) {
             case 1:

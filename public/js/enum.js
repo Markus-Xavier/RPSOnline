@@ -2,6 +2,7 @@ const clientEvents = {
     CHOOSE_MOVE: 'player.chooseMove',
     COUNTDOWN: 'countdown',
     ROOM_JOIN: 'room.join',
+    ROUND_READY: 'round.ready',
 };
 
 const serverEvents = {

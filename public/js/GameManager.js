@@ -15,23 +15,23 @@ export default class GameManager {
     startTimer() {
         console.log('starting timer for next round!');
         this.intervalID = setInterval(() => {
+            this.render.renderText(document.getElementsByClassName('timer-text')[0], this.totalSecondsRemaining);
             this.totalSecondsRemaining--;
-            if(this.totalSecondsRemaining) {
-                this.render.renderText(document.getElementsByClassName('timer-text')[0], this.totalSecondsRemaining)
-            } else {
-                console.log(this.player);
+            this.render.timerTextColor(this.totalSecondsRemaining);
+            if(this.totalSecondsRemaining === -1) {
                 if (!this.player.selectedPiece) {
                     this.player.chooseMove('no piece selected');
                 }
                 this.socketManager.emit('player.chooseMove', this.player.selectedPiece);
-                this.stopTimer();
+                this.clearInterval();
                 this.totalSecondsRemaining = 10;
             }
         }, 1000)
     }
 
-    stopTimer() {
-        clearInterval(this.intervalID);
+    roundWinner(roundResult, opponentPiece) {
+        this.player.updateScore(roundResult);
+        console.log(opponentPiece);
     }
 
     resetBattlefield() {
@@ -47,5 +47,9 @@ export default class GameManager {
     resetGame() {
         history.pushState({}, document.title, '/');
         this.render.changeScene(1);
+    }
+
+    clearInterval() {
+        clearInterval(this.intervalID);
     }
 }

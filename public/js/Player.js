@@ -40,11 +40,10 @@ export default class Player {
         this.selectedPiece.showInBattlefield();
     }
 
-    roundWinner(data, opponentPiece) {
-        console.log (opponentPiece);
-        if (data === 'draw') {
+    updateScore(roundResult) {
+        if (roundResult === 'draw') {
             console.log('we draw!');
-        } else if (data === this.selectedPiece.type) {
+        } else if (roundResult === this.selectedPiece.type) {
             console.log('I win!');
             this.wins++;
             this.render.renderText(document.getElementsByClassName('badge-wins-count')[0], this.wins);
