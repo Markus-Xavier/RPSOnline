@@ -2,11 +2,6 @@ export default class GamePiece {
     constructor(type, render) {
         this.type = type;
         this.winCondition = this.determineWinCondition();
-        this.pieceImages = {
-            rock: './assets/Rock_Sticker.png',
-            paper: './assets/Paper_Sticker.png',
-            scissors: './assets/Scissor_Sticker.png'
-        }
         this.render = render;
     }
 
@@ -14,7 +9,7 @@ export default class GamePiece {
         if (document.querySelector('.battle-platform img').hidden) {
             this.render.toggleHidden(document.querySelector('.battle-platform img'));
         }
-        this.render.renderGamePiece(document.querySelector('.battle-platform img'), this.pieceImages[this.type]);
+        this.render.renderGamePiece(document.querySelector('.battle-platform img'), this.render.pieceImages[this.type]);
     }
 
     determineWinCondition() {

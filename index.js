@@ -64,8 +64,21 @@ function initConnection(socket) {
     if (opponent && opponent.move) {
       declareWinner(players[socket.id].move, opponent.move, socket);
       clearPlayerMoves(players[socket.id], opponent);
-      socket.emit('round.start');
-      opponent.socket.emit('round.start');
+    }
+  });
+
+  socket.on('round.ready', () => {
+    const opponent = findOpponent(socket);
+    if(!players[socket.id]) {
+      return
+    } else {
+      players[socket.id].roundReady = true;
+      if (opponent && opponent.roundReady) {
+        socket.emit('round.start');
+        opponent.socket.emit('round.start');
+        players[socket.id].roundReady = false;
+        opponent.roundReady = false;
+      }
     }
   });
 };
@@ -81,6 +94,7 @@ function joinGame(socket, roomID, username, icon) {
     username: username,
     icon: icon,
     isPlayerOne: false,
+    roundReady: false
   };
   const targetPlayer = players[socket.id];
   if (targetRoom) {

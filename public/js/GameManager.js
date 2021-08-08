@@ -1,3 +1,5 @@
+import { clientEvents } from "./enum.js";
+
 export default class GameManager {
     constructor(socketManager, render, player) {
         this.socketManager = socketManager;
@@ -31,13 +33,37 @@ export default class GameManager {
 
     roundWinner(roundResult, opponentPiece) {
         this.player.updateScore(roundResult);
-        console.log(opponentPiece);
+        this.render.renderGamePiece(document.querySelector('.battle-opponent-platform img'), this.render.pieceImages[opponentPiece]);
+            setTimeout(() => {
+            this.render.toggleHidden(document.getElementsByClassName('timer-text')[0]);
+            this.render.toggleHidden(document.getElementsByClassName('countdown-text')[0]);
+            this.displayWinningImage(roundResult, opponentPiece);
+        } ,3000);
+    }
+
+    displayWinningImage(roundResult, opponentPiece) {
+        let winningImage;
+        if(roundResult === 'draw') {
+            winningImage = this.render.winningImages['draw' + opponentPiece];
+        } else if (roundResult === this.player.selectedPiece.type) {
+            winningImage = this.render.winningImages[this.player.selectedPiece.type];
+        } else {
+            winningImage = this.render.winningImages[opponentPiece];
+        }
+        this.render.toggleHidden(document.getElementsByClassName('winning-image')[0]);
+        this.render.renderGamePiece(document.getElementsByClassName('winning-image')[0], winningImage);
+        this.render.toggleHidden(document.querySelector('.battle-opponent-platform img'));
+        this.render.toggleHidden(document.querySelector('.battle-platform img'));
+        setTimeout(this.resetBattlefield.bind(this), 3000);
     }
 
     resetBattlefield() {
-        if(!document.querySelector('.battle-platform img').hidden) {
-            this.render.toggleHidden(document.querySelector('.battle-platform img'));
-        }
+        this.render.toggleHidden(document.getElementsByClassName('winning-image')[0]);
+        this.render.toggleHidden(document.getElementsByClassName('timer-text')[0]);
+        this.render.toggleHidden(document.getElementsByClassName('countdown-text')[0]);
+        this.render.toggleHidden(document.querySelector('.battle-opponent-platform img'));
+        this.render.renderGamePiece(document.querySelector('.battle-opponent-platform img'), this.render.pieceImages.questionMark);
+        this.socketManager.emit('round.ready');
     }
 
     startBattlefield() {

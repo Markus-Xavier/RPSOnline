@@ -1,6 +1,15 @@
 export default class Render {
     constructor() {
         this.initialize();
+        this.pieceImages = {
+            rock: './assets/Rock_Sticker.png',
+            paper: './assets/Paper_Sticker.png',
+            scissors: './assets/Scissor_Sticker.png',
+            questionMark: './assets/Question_Mark.svg',
+        }
+        this.winningImages = {
+            rock: './assets/Rock_Wins_Sticker.png'
+        }
     }
 
     initialize() {
@@ -43,7 +52,6 @@ export default class Render {
             document.getElementsByClassName('timer-text')[0].classList.remove('timer-text-danger');
             document.getElementsByClassName('timer-text')[0].classList.remove('timer-text-warning');
         }
-            
     }
 
     changeScene(sceneNumber) {

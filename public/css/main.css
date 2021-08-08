@@ -324,6 +324,12 @@ form {
     text-align: center;
 }
 
+.winning-image {
+    align-self: center;
+    height: 250px;
+    width: 300px;
+}
+
 .timer-text, .timer-text-warning, .timer-text-danger {
     font-size: 6em;
 }
