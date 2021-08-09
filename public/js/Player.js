@@ -1,5 +1,6 @@
 import GamePiece from "./GamePiece.js";
 import { clientEvents } from "./enum.js";
+import LinkGenerator from "./LinkGenerator.js";
 
 export default class Player {
     constructor(socketManager, render) {
@@ -10,6 +11,7 @@ export default class Player {
         this.render = render;
         this.wins = 0;
         this.opponentsWins = 0;
+        this.linkGenerator = new LinkGenerator();
     }
 
     initialize(playerConfig) {
@@ -21,13 +23,11 @@ export default class Player {
         if(!event.target) {
             const playerOptions = ['rock', 'paper', 'scissors'];
             const randomGamePiece = playerOptions[Math.floor(Math.random() * (3 - 0) + 0)];
-            console.log(randomGamePiece);
             this.selectedPiece = new GamePiece(randomGamePiece, this.render);
             this.selectedPiece.showInBattlefield();
             return;
         }
         event.preventDefault();
-        console.log(event.target.parentNode);
         if(event.target.nodeName === 'DIV') {
             return;
         }
@@ -41,14 +41,12 @@ export default class Player {
     }
 
     updateScore(roundResult) {
-        if (roundResult === 'draw') {
-            console.log('we draw!');
-        } else if (roundResult === this.selectedPiece.type) {
+        if (roundResult === this.selectedPiece.type) {
             console.log('I win!');
             this.wins++;
             this.render.renderText(document.getElementsByClassName('badge-wins-count')[0], this.wins);
-            console.log()
-        } else {
+        } 
+        if (roundResult !== this.selectedPiece.type) {
             console.log('I lose!');
             this.opponentsWins++;
             this.render.renderText(document.getElementsByClassName('badge-opponent-wins-count')[0], this.opponentsWins);
@@ -61,7 +59,7 @@ export default class Player {
         const urlParams = new URLSearchParams(window.location.search);
         let roomID = urlParams.get('room');
         if (!roomID) {
-            urlParams.set('room', Math.random());
+            urlParams.set('room', this.linkGenerator.generateLink());
             history.replaceState(null, null, "?" + urlParams.toString());
             roomID = urlParams.get('room');
             console.log(roomID);

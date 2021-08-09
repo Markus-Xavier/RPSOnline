@@ -20,7 +20,7 @@ export default class GameManager {
             this.render.renderText(document.getElementsByClassName('timer-text')[0], this.totalSecondsRemaining);
             this.totalSecondsRemaining--;
             this.render.timerTextColor(this.totalSecondsRemaining);
-            if(this.totalSecondsRemaining === -1) {
+            if(this.totalSecondsRemaining < 0) {
                 if (!this.player.selectedPiece) {
                     this.player.chooseMove('no piece selected');
                 }
@@ -50,6 +50,7 @@ export default class GameManager {
         } else {
             winningImage = this.render.winningImages[opponentPiece];
         }
+        console.log(roundResult, opponentPiece, winningImage);
         this.render.toggleHidden(document.getElementsByClassName('winning-image')[0]);
         this.render.renderGamePiece(document.getElementsByClassName('winning-image')[0], winningImage);
         this.render.toggleHidden(document.querySelector('.battle-opponent-platform img'));
@@ -58,12 +59,15 @@ export default class GameManager {
     }
 
     resetBattlefield() {
+        this.render.timerTextColor(this.totalSecondsRemaining);
+        this.render.renderText(document.getElementsByClassName('timer-text')[0], this.totalSecondsRemaining);
         this.render.toggleHidden(document.getElementsByClassName('winning-image')[0]);
         this.render.toggleHidden(document.getElementsByClassName('timer-text')[0]);
         this.render.toggleHidden(document.getElementsByClassName('countdown-text')[0]);
         this.render.toggleHidden(document.querySelector('.battle-opponent-platform img'));
         this.render.renderGamePiece(document.querySelector('.battle-opponent-platform img'), this.render.pieceImages.questionMark);
         this.socketManager.emit('round.ready');
+        this.player.selectedPiece = '';
     }
 
     startBattlefield() {

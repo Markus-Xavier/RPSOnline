@@ -189,11 +189,13 @@ form {
     margin: 32px;
     font-family: 'Inconsolata', sans-serif;
     color: white;
+    display: none;
 }
 
 .badge-username,.badge-opponent-username {
     white-space: nowrap;
     min-width: 90px;
+    text-align: right;
 }
 
 .badge-content, .badge-opponent-content {

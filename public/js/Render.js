@@ -8,7 +8,12 @@ export default class Render {
             questionMark: './assets/Question_Mark.svg',
         }
         this.winningImages = {
-            rock: './assets/Rock_Wins_Sticker.png'
+            rock: './assets/Rock_Wins_Sticker.png',
+            paper: 'x',
+            scissors: 'x',
+            drawrock: 'x',
+            drawpaper: 'x',
+            drawscissors: 'x',
         }
     }
 
@@ -72,7 +77,6 @@ export default class Render {
                 document.getElementById('scene-three').style.display = 'none';
                 document.getElementsByClassName('player-badge')[0].style.display = 'flex';
                 document.getElementsByClassName('player-badge')[1].style.display = 'flex';
-
                 break;
 
             case 3:
