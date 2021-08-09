@@ -1,7 +1,7 @@
 import { clientEvents, serverEvents } from './enum.js';
 import Player from './Player.js';
 import SocketManager from './SocketManager.js';
-import GameManager from './gameManager.js';
+import GameManager from './GameManager.js';
 import FormManager from './FormManager.js';
 import Render from './Render.js';
 
