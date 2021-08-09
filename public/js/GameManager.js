@@ -1,12 +1,13 @@
 import { clientEvents } from "./enum.js";
 
 export default class GameManager {
-    constructor(socketManager, render, player) {
+    constructor(socketManager, render, player, battleFormManager) {
         this.socketManager = socketManager;
         this.render = render;
         this.totalSecondsRemaining = 10;
         this.intervalID;
         this.player = player;
+        this.battleFormManager = battleFormManager;
     }
 
     waitingForPlayer() {
@@ -27,6 +28,8 @@ export default class GameManager {
                 this.socketManager.emit('player.chooseMove', this.player.selectedPiece);
                 this.clearInterval();
                 this.totalSecondsRemaining = 10;
+                console.log('hi');
+                this.render.toggleDisplay(document.querySelector('form[name="battle-moves"]'), 'flex');
             }
         }, 1000)
     }
@@ -68,6 +71,8 @@ export default class GameManager {
         this.render.renderGamePiece(document.querySelector('.battle-opponent-platform img'), this.render.pieceImages.questionMark);
         this.socketManager.emit('round.ready');
         this.player.selectedPiece = '';
+        this.battleFormManager.reset();
+        this.render.toggleDisplay(document.querySelector('form[name="battle-moves"]'), 'flex');
     }
 
     startBattlefield() {
@@ -77,6 +82,8 @@ export default class GameManager {
     resetGame() {
         history.pushState({}, document.title, '/');
         this.render.changeScene(1);
+        this.player.wins = 0;
+        
     }
 
     clearInterval() {

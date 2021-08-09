@@ -47,6 +47,16 @@ footer {
     height: 147px;
 }
 
+input[type="radio"] {
+    opacity: 0;
+    position: fixed;
+    width: 0;
+}
+
+input[type="radio"]:checked + label {
+    background-color: #EE9B00;
+}
+
 #scene-two, #scene-three{
     display: none;
 }
@@ -60,6 +70,9 @@ footer {
     cursor: pointer;
 }
 
+.hide {
+    display: none;
+}
 
 /*~~~~~login~~~~~*/
 
@@ -125,12 +138,6 @@ footer {
     color: white;
 }
 
-.flex-form-field input[type="radio"] {
-    opacity: 0;
-    position: fixed;
-    width: 0;
-}
-
 .form-icon-button {
     width: 60px;
     height: 60px;
@@ -161,9 +168,7 @@ form {
     font-weight: 700;
 }
 
-.flex-form-field input[type="radio"]:checked + label {
-    background-color: #EE9B00;
-}
+
 
 .flex-form-field {
     display: flex;
@@ -286,9 +291,10 @@ form {
     display: flex;
     flex-direction: column;
     margin-right: 112px;
+    height: 150px;
 }
 
-.battle-moves span {
+.choose-your-fighter {
     text-align: end;
     padding-right: 12px;
     font-size: 1.5em;

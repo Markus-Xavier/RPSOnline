@@ -10,10 +10,10 @@ export default class Render {
         this.winningImages = {
             rock: '/assets/Rock_Wins_Sticker.png',
             paper: 'x',
-            scissors: 'x',
-            drawrock: 'x',
+            scissors: '/assets/Scissor_Wins_Sticker.png',
+            drawrock: '/assets/Rock_Tie_Sticker.png',
             drawpaper: 'x',
-            drawscissors: 'x',
+            drawscissors: '/assets/Scissor_Tie_Sticker.png',
         }
     }
 
@@ -26,6 +26,17 @@ export default class Render {
     toggleHidden(element) {
         element.hidden = !element.hidden;
     }
+
+    toggleDisplay(element, originalDisplay) {
+        if(!element.style.display) {
+            element.style.display = originalDisplay;
+        }
+        if (element.style.display === originalDisplay) {
+            element.style.display = 'none';
+        } else {
+            element.style.display = originalDisplay;
+        }
+    } 
 
     renderPlayerBadge(config) {
         document.getElementsByClassName('badge-icon')[0].innerText = config.icon;

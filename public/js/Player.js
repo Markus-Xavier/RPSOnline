@@ -25,22 +25,18 @@ export default class Player {
             const randomGamePiece = playerOptions[Math.floor(Math.random() * (3 - 0) + 0)];
             this.selectedPiece = new GamePiece(randomGamePiece, this.render);
             this.selectedPiece.showInBattlefield();
-            return;
-        }
-        event.preventDefault();
-        if(event.target.nodeName === 'DIV') {
-            return;
-        }
-
-        if(event.target.nodeName === 'BUTTON') {
+        } else {
             this.selectedPiece = new GamePiece(event.target.value, this.render);
-        } else if (event.target.nodeName === 'IMG') {
-            this.selectedPiece = new GamePiece(event.target.parentNode.value, this.render);
+            this.selectedPiece.showInBattlefield();
         }
-        this.selectedPiece.showInBattlefield();
     }
 
     updateScore(roundResult) {
+        if(roundResult === 'draw') {
+            console.log('draw');
+            return;
+        }
+
         if (roundResult === this.selectedPiece.type) {
             console.log('I win!');
             this.wins++;

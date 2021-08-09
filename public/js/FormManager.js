@@ -8,4 +8,12 @@ export default class FormManager {
     initialize() {
         this.form.onsubmit = this.callBack;
     }
+
+    onChange(callback) {
+        this.form.onchange = callback;
+    }
+
+    reset() {
+        this.form.reset();
+    }
 }

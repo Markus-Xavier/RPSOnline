@@ -26,13 +26,15 @@ const saveLinkToClipboard = (event) => {
 
 const socketManager = new SocketManager();
 const render = new Render();
-let player = new Player(socketManager, render);
+const player = new Player(socketManager, render);
+const opponent = null;
 const formManager = new FormManager('player-creation', loginHandler);
-const gameManager = new GameManager(socketManager, render, player);
-const buttons = document.getElementsByClassName('battle-button-container')[0];
+const battleFormManager = new FormManager('battle-moves', null);
+const gameManager = new GameManager(socketManager, render, player, battleFormManager);
 const copyURLButton = document.getElementsByClassName('copy-link-button')[0];
 copyURLButton.addEventListener('click', saveLinkToClipboard);
-buttons.addEventListener('click', player.chooseMove.bind(player));
+battleFormManager.onChange(player.chooseMove.bind(player));
+// buttons.addEventListener('click', player.chooseMove.bind(player));
 
 
 (() => {
