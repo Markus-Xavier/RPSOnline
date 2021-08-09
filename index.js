@@ -6,11 +6,9 @@ const http = require('http').createServer(app);
 const io = require('socket.io')(http, {pingTimeout: 60000});
 http.listen(port);
 
-// app.get('/', function(req, res){
-//   res.sendFile(__dirname + '/index.html');
-// });
-
-app.use('/',express.static(path.join(__dirname, 'public')));
+app.get('/', function(req, res){
+  res.sendFile(__dirname + '/index.html');
+});
 
 let players = {};
 let rooms = {};

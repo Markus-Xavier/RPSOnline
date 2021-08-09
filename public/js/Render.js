@@ -2,13 +2,13 @@ export default class Render {
     constructor() {
         this.initialize();
         this.pieceImages = {
-            rock: './assets/Rock_Sticker.png',
-            paper: './assets/Paper_Sticker.png',
-            scissors: './assets/Scissor_Sticker.png',
-            questionMark: './assets/Question_Mark.svg',
+            rock: '/assets/Rock_Sticker.png',
+            paper: '/assets/Paper_Sticker.png',
+            scissors: '/assets/Scissor_Sticker.png',
+            questionMark: '/assets/Question_Mark.svg',
         }
         this.winningImages = {
-            rock: './assets/Rock_Wins_Sticker.png',
+            rock: '/assets/Rock_Wins_Sticker.png',
             paper: 'x',
             scissors: 'x',
             drawrock: 'x',
