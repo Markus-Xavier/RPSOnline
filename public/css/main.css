@@ -55,6 +55,11 @@ footer {
     width: 100%;
 }
 
+.button-hover:hover {
+    background-color: #EE9B00;
+    cursor: pointer;
+}
+
 
 /*~~~~~login~~~~~*/
 
@@ -304,10 +309,6 @@ form {
     color: white;
     font-size: 1.125em;
     margin-right: 32px;
-}
-
-.battle-moves-button:hover {
-    background-color: #EE9B00;
 }
 
 .battle-button-container{
