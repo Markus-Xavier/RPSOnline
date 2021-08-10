@@ -51,7 +51,7 @@ export default class Player {
 
     joinServer(config) {
         this.initialize(config);
-        this.render.renderPlayerBadge(config);
+        this.renderPlayerBadge(config, {icon: document.getElementsByClassName('badge-icon')[0], username: document.getElementsByClassName('badge-username')[0]});
         const urlParams = new URLSearchParams(window.location.search);
         let roomID = urlParams.get('room');
         if (!roomID) {
@@ -61,5 +61,10 @@ export default class Player {
             console.log(roomID);
         }
         this.socketManager.emit(clientEvents.ROOM_JOIN, {roomID, username: config.username, icon: config.icon});
+    }
+
+    renderPlayerBadge(config, locations) {
+        this.render.renderText(locations.icon, config.icon);
+        this.render.renderText(locations.username, config.username);
     }
 }

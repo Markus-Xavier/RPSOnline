@@ -38,11 +38,6 @@ export default class Render {
         }
     } 
 
-    renderPlayerBadge(config) {
-        document.getElementsByClassName('badge-icon')[0].innerText = config.icon;
-        document.getElementsByClassName('badge-username')[0].innerText = config.username;
-    }
-
     renderOpponentBadge(opponentConfig) {
         if(opponentConfig) {
             console.log(opponentConfig);
