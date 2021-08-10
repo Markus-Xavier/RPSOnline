@@ -20,8 +20,13 @@ const loginHandler = (event) => {
 };
 
 const saveLinkToClipboard = (event) => {
-  event.preventDefault();
-  navigator.clipboard.writeText(event.target.innerText);
+  if(event.target.nodeName === "I") {
+    event.preventDefault();
+    navigator.clipboard.writeText(event.target.parentNode.innerText);
+  } else {
+    event.preventDefault();
+    navigator.clipboard.writeText(event.target.innerText);
+  }
 }
 
 const socketManager = new SocketManager();

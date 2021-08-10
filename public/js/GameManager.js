@@ -13,7 +13,10 @@ export default class GameManager {
 
     waitingForPlayer() {
         this.render.changeScene(2);
+        const clipboardIcon = document.createElement('i');
+        clipboardIcon.classList.add('far', 'fa-copy', 'copy-icon');
         document.getElementsByClassName('copy-link-button')[0].innerText = window.location.href;
+        document.getElementsByClassName('copy-link-button')[0].appendChild(clipboardIcon);
     }
 
     initializeOpponent(opponentConfig) {
