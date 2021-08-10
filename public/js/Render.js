@@ -9,7 +9,7 @@ export default class Render {
         }
         this.winningImages = {
             rock: '/assets/Rock_Wins_Sticker.png',
-            paper: 'x',
+            paper: '/assets/Paper_Wins_Sticker.png',
             scissors: '/assets/Scissor_Wins_Sticker.png',
             drawrock: '/assets/Rock_Tie_Sticker.png',
             drawpaper: '/assets/Paper_Tie_Sticker.png',
