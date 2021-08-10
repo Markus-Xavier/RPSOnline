@@ -355,3 +355,15 @@ form {
     font-size: 1em;
     font-weight: 600;
 }
+
+.flex-winning-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.round-result-text {
+    text-align: center;
+    font-size: 1.5em;
+    font-weight: 600;
+}

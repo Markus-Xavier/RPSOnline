@@ -45,21 +45,19 @@ export default class GameManager {
         }, 1000)
     }
 
-
     checkRoundResult(roundResult) {
         console.log(roundResult);
         if(roundResult === 'draw') {
-            console.log('draw');
-            return;
+            return 'It is a draw!';
         }
 
         if (roundResult === this.player.selectedPiece.type) {
-            console.log('I win!');
             this.player.wins++;
+            return 'Victory!';
         } 
         if (roundResult === this.opponent.selectedPiece) {
-            console.log('I lose!');
             this.opponent.wins++;
+            return 'Defeat!';
         }
     }
 
@@ -70,16 +68,15 @@ export default class GameManager {
 
     roundWinner(roundResult, opponentPiece) {
         this.opponent.selectedPiece = opponentPiece;
-        this.checkRoundResult(roundResult);
         this.render.renderGamePiece(document.querySelector('.battle-opponent-platform img'), this.render.pieceImages[opponentPiece]);
             setTimeout(() => {
             this.render.toggleHidden(document.getElementsByClassName('timer-text')[0]);
             this.render.toggleHidden(document.getElementsByClassName('countdown-text')[0]);
-            this.displayWinningImage(roundResult, opponentPiece);
+            this.displayWinningImage(roundResult, opponentPiece, this.checkRoundResult(roundResult));
         } ,3000);
     }
 
-    displayWinningImage(roundResult, opponentPiece) {
+    displayWinningImage(roundResult, opponentPiece, winLoss) {
         let winningImage;
         if(roundResult === 'draw') {
             winningImage = this.render.winningImages['draw' + opponentPiece];
@@ -88,11 +85,12 @@ export default class GameManager {
         } else {
             winningImage = this.render.winningImages[opponentPiece];
         }
-        console.log(roundResult, opponentPiece, winningImage);
         this.render.toggleHidden(document.getElementsByClassName('winning-image')[0]);
         this.render.renderGamePiece(document.getElementsByClassName('winning-image')[0], winningImage);
         this.render.toggleHidden(document.querySelector('.battle-opponent-platform img'));
         this.render.toggleHidden(document.querySelector('.battle-platform img'));
+        this.render.toggleHidden(document.getElementsByClassName('round-result-text')[0]);
+        this.render.renderText(document.getElementsByClassName('round-result-text')[0], winLoss);
         this.updateScoreText();
         setTimeout(this.resetBattlefield.bind(this), 3000);
     }
@@ -104,6 +102,7 @@ export default class GameManager {
         this.render.toggleHidden(document.getElementsByClassName('timer-text')[0]);
         this.render.toggleHidden(document.getElementsByClassName('countdown-text')[0]);
         this.render.toggleHidden(document.querySelector('.battle-opponent-platform img'));
+        this.render.toggleHidden(document.getElementsByClassName('round-result-text')[0]);
         this.render.renderGamePiece(document.querySelector('.battle-opponent-platform img'), this.render.pieceImages.questionMark);
         this.socketManager.emit('round.ready');
         this.player.selectedPiece = '';
