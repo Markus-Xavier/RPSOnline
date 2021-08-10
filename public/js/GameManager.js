@@ -42,8 +42,32 @@ export default class GameManager {
         }, 1000)
     }
 
+
+    checkRoundResult(roundResult) {
+        console.log(roundResult);
+        if(roundResult === 'draw') {
+            console.log('draw');
+            return;
+        }
+
+        if (roundResult === this.player.selectedPiece.type) {
+            console.log('I win!');
+            this.player.wins++;
+        } 
+        if (roundResult === this.opponent.selectedPiece) {
+            console.log('I lose!');
+            this.opponent.wins++;
+        }
+    }
+
+    updateScoreText() {
+        this.render.renderText(document.getElementsByClassName('badge-wins-count')[0], this.player.wins);
+        this.render.renderText(document.getElementsByClassName('badge-opponent-wins-count')[0], this.opponent.wins);
+    }
+
     roundWinner(roundResult, opponentPiece) {
-        this.player.updateScore(roundResult);
+        this.opponent.selectedPiece = opponentPiece;
+        this.checkRoundResult(roundResult);
         this.render.renderGamePiece(document.querySelector('.battle-opponent-platform img'), this.render.pieceImages[opponentPiece]);
             setTimeout(() => {
             this.render.toggleHidden(document.getElementsByClassName('timer-text')[0]);
@@ -66,6 +90,7 @@ export default class GameManager {
         this.render.renderGamePiece(document.getElementsByClassName('winning-image')[0], winningImage);
         this.render.toggleHidden(document.querySelector('.battle-opponent-platform img'));
         this.render.toggleHidden(document.querySelector('.battle-platform img'));
+        this.updateScoreText();
         setTimeout(this.resetBattlefield.bind(this), 3000);
     }
 
@@ -91,6 +116,7 @@ export default class GameManager {
         history.pushState({}, document.title, '/');
         this.render.changeScene(1);
         this.player.wins = 0;
+        this.opponent.wins = 0;
     }
 
     clearInterval() {

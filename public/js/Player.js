@@ -10,7 +10,6 @@ export default class Player {
         this.socketManager = socketManager;
         this.render = render;
         this.wins = 0;
-        this.opponentsWins = 0;
         this.linkGenerator = new LinkGenerator();
     }
 
@@ -28,24 +27,6 @@ export default class Player {
         } else {
             this.selectedPiece = new GamePiece(event.target.value, this.render);
             this.selectedPiece.showInBattlefield();
-        }
-    }
-
-    updateScore(roundResult) {
-        if(roundResult === 'draw') {
-            console.log('draw');
-            return;
-        }
-
-        if (roundResult === this.selectedPiece.type) {
-            console.log('I win!');
-            this.wins++;
-            this.render.renderText(document.getElementsByClassName('badge-wins-count')[0], this.wins);
-        } 
-        if (roundResult !== this.selectedPiece.type) {
-            console.log('I lose!');
-            this.opponentsWins++;
-            this.render.renderText(document.getElementsByClassName('badge-opponent-wins-count')[0], this.opponentsWins);
         }
     }
 

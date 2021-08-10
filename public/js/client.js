@@ -47,8 +47,8 @@ battleFormManager.onChange(player.chooseMove.bind(player));
   socketManager.on(serverEvents.ROOM_JOINED, gameManager.waitingForPlayer.bind(gameManager));
   socketManager.on(serverEvents.OPPONENT_LEFT, gameManager.resetGame.bind(gameManager));
   socketManager.on(serverEvents.DISCONNECT, gameManager.resetGame.bind(gameManager))
+  render.changeScene(1);
   // socketManager.on(serverEvents.CONNECT);
   // socketManager.on('opponent.connect',);
   // socketManager.on('opponent.pressed.button', opponentPressedButton);
-  render.changeScene(1);
 })();
