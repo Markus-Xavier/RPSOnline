@@ -12,7 +12,7 @@ export default class Render {
             paper: 'x',
             scissors: '/assets/Scissor_Wins_Sticker.png',
             drawrock: '/assets/Rock_Tie_Sticker.png',
-            drawpaper: 'x',
+            drawpaper: '/assets/Paper_Tie_Sticker.png',
             drawscissors: '/assets/Scissor_Tie_Sticker.png',
         }
     }
