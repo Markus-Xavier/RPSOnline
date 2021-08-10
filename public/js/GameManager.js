@@ -1,18 +1,26 @@
 import { clientEvents } from "./enum.js";
 
 export default class GameManager {
-    constructor(socketManager, render, player, battleFormManager) {
+    constructor(socketManager, render, player, opponent, battleFormManager) {
         this.socketManager = socketManager;
         this.render = render;
         this.totalSecondsRemaining = 10;
         this.intervalID;
         this.player = player;
+        this.opponent = opponent;
         this.battleFormManager = battleFormManager;
     }
 
     waitingForPlayer() {
         this.render.changeScene(2);
         document.getElementsByClassName('copy-link-button')[0].innerText = window.location.href;
+    }
+
+    initializeOpponent(opponentConfig) {
+        if(opponentConfig) {
+            this.opponent.initialize(opponentConfig);
+            this.opponent.renderPlayerBadge(opponentConfig, {icon: document.getElementsByClassName('badge-opponent-icon')[0], username: document.getElementsByClassName('badge-opponent-username')[0]});
+        }
     }
 
     startTimer() {
@@ -83,7 +91,6 @@ export default class GameManager {
         history.pushState({}, document.title, '/');
         this.render.changeScene(1);
         this.player.wins = 0;
-        
     }
 
     clearInterval() {

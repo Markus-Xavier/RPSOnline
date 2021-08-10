@@ -30,7 +30,7 @@ const player = new Player(socketManager, render);
 const opponent = new Player(socketManager, render);
 const formManager = new FormManager('player-creation', loginHandler);
 const battleFormManager = new FormManager('battle-moves', null);
-const gameManager = new GameManager(socketManager, render, player, battleFormManager);
+const gameManager = new GameManager(socketManager, render, player, opponent, battleFormManager);
 const copyURLButton = document.getElementsByClassName('copy-link-button')[0];
 copyURLButton.addEventListener('click', saveLinkToClipboard);
 battleFormManager.onChange(player.chooseMove.bind(player));
@@ -40,9 +40,7 @@ battleFormManager.onChange(player.chooseMove.bind(player));
 (() => {
   socketManager.on(serverEvents.ROUND_WINNER, gameManager.roundWinner.bind(gameManager));
   socketManager.on(serverEvents.ROUND_START, (opponentData) => {
-    opponent.initialize(opponentData);
-    opponent.renderPlayerBadge(opponentData, {icon: document.getElementsByClassName('badge-opponent-icon')[0], username: document.getElementsByClassName('badge-opponent-username')[0]});
-    // render.renderOpponentBadge(opponentData);
+    gameManager.initializeOpponent(opponentData);
     gameManager.startTimer();
   });
   socketManager.on(serverEvents.ROUND_START, gameManager.startBattlefield.bind(gameManager));

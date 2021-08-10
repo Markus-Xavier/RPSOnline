@@ -64,7 +64,9 @@ export default class Player {
     }
 
     renderPlayerBadge(config, locations) {
-        this.render.renderText(locations.icon, config.icon);
-        this.render.renderText(locations.username, config.username);
+        if(config) {
+            this.render.renderText(locations.icon, config.icon);
+            this.render.renderText(locations.username, config.username);
+        }
     }
 }
