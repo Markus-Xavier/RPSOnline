@@ -5,6 +5,8 @@ export default class Render {
             rock: '/assets/Rock_Sticker.png',
             paper: '/assets/Paper_Sticker.png',
             scissors: '/assets/Scissor_Sticker.png',
+            lizard: '/assets/Lizard_Sticker.png',
+            alien: '/assets/Alien_Sticker.png',
             questionMark: '/assets/Question_Mark.svg',
         }
         this.winningImages = {
