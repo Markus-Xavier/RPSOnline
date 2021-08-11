@@ -14,11 +14,15 @@ export default class GamePiece {
 
     determineWinCondition() {
         if (this.type === 'rock') {
-            return 'scissors';
+            return ['scissors', 'lizard'];
         } else if (this.type === 'paper') {
-            return 'rock';
+            return ['rock', 'alien'];
         } else if (this.type === 'scissors') {
-            return 'paper';
+            return ['paper', 'lizard'];
+        } else if (this.type === 'lizard') {
+            return ['alien', 'paper']; 
+        } else if (this.type === 'alien') {
+            return ['scissors', 'rock'];
         }
     }
 }

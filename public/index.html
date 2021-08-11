@@ -93,6 +93,7 @@
             <h4>SEND THIS LINK TO YOUR FRIEND TO PLAY AGAINST THEM!</h4>
             <button class="text-field copy-link-button">https://rpsgame.com/room2107<i class="far fa-copy copy-icon"></i></button>
           </div>
+          <button class="change-room-type button-hover" type="submit">CLASSIC</button>
         </div>
       </section>
 
@@ -116,7 +117,15 @@
               <input id="paper" value="paper" name="choose" type="radio"/>
               <label class="battle-moves-button button-hover" for="paper"><img src="/assets/Paper_Sticker.png"> PAPER</label>
               <input id="scissors" value="scissors" name="choose" type="radio"/>
-              <label class="battle-moves-button button-hover" for="scissors"><img src="/assets/Scissor_Sticker.png""> SCISSORS</label>
+              <label class="battle-moves-button button-hover" for="scissors"><img src="/assets/Scissor_Sticker.png"> SCISSORS</label>
+              <div class="additional-battle-moves" hidden>
+                <input id="lizard" value="lizard" name="choose" type="radio"/>
+                <label class="battle-moves-button button-hover" for="lizard"><img src="/assets/Lizard_Sticker.png"> LIZARD</label>
+              </div>  
+              <div class="additional-battle-moves" hidden>
+                <input id="alien" value="alien" name="choose" type="radio"/>
+                <label class="battle-moves-button button-hover" for="alien"><img src="/assets/Alien_Sticker.png"/> ALIEN</label>
+              </div>
             </div>
             <label class="choose-your-fighter" for="choose">CHOOSE YOUR FIGHTER</label>
           </form>

@@ -27,7 +27,7 @@ const declareWinner = (firstGamePiece, secondGamePiece, socket) => {
     return;
   }
 
-  if (firstGamePiece.winCondition === second) {
+  if (firstGamePiece.winCondition.includes(second)) {
     socket.emit('round.winner', first, second);
     findOpponent(socket).socket.emit('round.winner', first, first);
   } else {
@@ -56,6 +56,11 @@ function initConnection(socket) {
       }
       delete rooms[player.room];
     }
+  });
+
+  socket.on('room.changeType', (roomType) => {
+    targetRoom = players[socket.id].room;
+    rooms[targetRoom].roomType = roomType;
   });
 
   socket.on('player.chooseMove', (data) => {
@@ -103,13 +108,14 @@ function joinGame(socket, roomID, username, icon) {
     } else {
       targetRoom.playerTwo = socket.id;
       targetPlayer.room = roomID;
-      socket.emit('round.start', {username: findOpponent(socket).username, icon: findOpponent(socket).icon});
-      findOpponent(socket).socket.emit('round.start', {username: targetPlayer.username, icon: targetPlayer.icon});
+      socket.emit('round.start', {username: findOpponent(socket).username, icon: findOpponent(socket).icon, roomType: targetRoom.roomType});
+      findOpponent(socket).socket.emit('round.start', {username: targetPlayer.username, icon: targetPlayer.icon, roomType: targetRoom.roomType});
     }
   } else {
     rooms[roomID] = {
       playerOne: socket.id,
       playerTwo: '',
+      roomType: 'classic',
     };
     targetPlayer.isPlayerOne = true;
     targetPlayer.room = roomID;

@@ -9,6 +9,7 @@ export default class GameManager {
         this.player = player;
         this.opponent = opponent;
         this.battleFormManager = battleFormManager;
+        this.gameType = 'classic';
     }
 
     waitingForPlayer() {
@@ -17,6 +18,18 @@ export default class GameManager {
         clipboardIcon.classList.add('far', 'fa-copy', 'copy-icon');
         document.getElementsByClassName('copy-link-button')[0].innerText = window.location.href;
         document.getElementsByClassName('copy-link-button')[0].appendChild(clipboardIcon);
+    }
+
+    changeGameType(event) {
+        event.preventDefault();
+        const changeGameTypeButton = document.getElementsByClassName('change-room-type')[0];
+        if(changeGameTypeButton.innerText.includes('CLASSIC')) {
+            this.render.renderText(changeGameTypeButton, 'UNIQUE');
+            this.socketManager.emit('room.changeType', 'unique');
+        } else {
+            this.render.renderText(changeGameTypeButton, 'CLASSIC');
+            this.socketManager.emit('room.changeType', 'classic');
+        }
     }
 
     initializeOpponent(opponentConfig) {
@@ -39,7 +52,6 @@ export default class GameManager {
                 this.socketManager.emit('player.chooseMove', this.player.selectedPiece);
                 this.clearInterval();
                 this.totalSecondsRemaining = 10;
-                console.log('hi');
                 this.render.toggleDisplay(document.querySelector('form[name="battle-moves"]'), 'flex');
             }
         }, 1000)
@@ -110,7 +122,14 @@ export default class GameManager {
         this.render.toggleDisplay(document.querySelector('form[name="battle-moves"]'), 'flex');
     }
 
-    startBattlefield() {
+    startBattlefield(roomInformation) {
+        const moreBattleMoves = document.getElementsByClassName('additional-battle-moves');
+        if (roomInformation && roomInformation.roomType === 'unique') {
+            this.gameType = 'unique';
+            for (let i = 0; i < moreBattleMoves.length; i++){
+                this.render.toggleHidden(moreBattleMoves[i]);
+            }
+        }
         this.render.changeScene(3);
     }
 

@@ -127,7 +127,7 @@ input[type="radio"]:checked + label {
     
 }
 
-.form-submit-button {
+.form-submit-button, .change-room-type {
     width: 197px;
     height: 42px;
     background-color: #005F73;
@@ -136,6 +136,12 @@ input[type="radio"]:checked + label {
     font-weight: bold;
     font-size: 1.5em;
     color: white;
+}
+
+.change-room-type {
+    margin-top: 16px;
+    margin-right: 32px;
+    align-self: flex-end;
 }
 
 .form-icon-button {
@@ -180,6 +186,7 @@ form {
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-direction: column;
     height: 308px;
     width: 793px;
     background-color: #F7F1DF;
@@ -366,4 +373,14 @@ form {
     text-align: center;
     font-size: 1.5em;
     font-weight: 600;
+}
+
+.additional-battle-moves {
+    margin-right: 32px;
+    width: 150px;
+}
+
+.additional-battle-moves img {
+    height: 56px;
+    width: 56px;
 }

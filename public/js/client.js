@@ -37,6 +37,8 @@ const formManager = new FormManager('player-creation', loginHandler);
 const battleFormManager = new FormManager('battle-moves', null);
 const gameManager = new GameManager(socketManager, render, player, opponent, battleFormManager);
 const copyURLButton = document.getElementsByClassName('copy-link-button')[0];
+const changeRoomTypeButton = document.getElementsByClassName('change-room-type')[0];
+changeRoomTypeButton.addEventListener('click', gameManager.changeGameType.bind(gameManager));
 copyURLButton.addEventListener('click', saveLinkToClipboard);
 battleFormManager.onChange(player.chooseMove.bind(player));
 // buttons.addEventListener('click', player.chooseMove.bind(player));
@@ -45,10 +47,12 @@ battleFormManager.onChange(player.chooseMove.bind(player));
 (() => {
   socketManager.on(serverEvents.ROUND_WINNER, gameManager.roundWinner.bind(gameManager));
   socketManager.on(serverEvents.ROUND_START, (opponentData) => {
+    console.log(opponentData);
     gameManager.initializeOpponent(opponentData);
+    gameManager.startBattlefield(opponentData);
     gameManager.startTimer();
   });
-  socketManager.on(serverEvents.ROUND_START, gameManager.startBattlefield.bind(gameManager));
+  // socketManager.on(serverEvents.ROUND_START, .bind(gameManager));
   socketManager.on(serverEvents.ROOM_JOINED, gameManager.waitingForPlayer.bind(gameManager));
   socketManager.on(serverEvents.OPPONENT_LEFT, gameManager.resetGame.bind(gameManager));
   socketManager.on(serverEvents.DISCONNECT, gameManager.resetGame.bind(gameManager))
